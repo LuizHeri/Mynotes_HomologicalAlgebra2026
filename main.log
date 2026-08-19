@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.7)  18 AUG 2026 22:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.7)  19 AUG 2026 19:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/herin/OneDrive/Documents/Matematica/Algebraic Geometry 2026/Mynotes_GA2026/main.tex"
-(c:/Users/herin/OneDrive/Documents/Matematica/Algebraic Geometry 2026/Mynotes_GA2026/main.tex
+**"c:/Users/herin/OneDrive/Documents/Matematica/Homological Algebra - 2026/Mynotes_HomologicalAlgebra/main.tex"
+(c:/Users/herin/OneDrive/Documents/Matematica/Homological Algebra - 2026/Mynotes_HomologicalAlgebra/main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
 (C:\Users\herin\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -1096,7 +1096,7 @@ Library (tcolorbox): 'tcbposter.code.tex' version '6.8.0'
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 24.
  (C:\Users\herin\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (main.aux (chapters/2026-ClassNotes.aux) (chapters/AlgebraicGroups.aux) (bibliography.aux))
+) (main.aux (chapters/Mynotes.aux) (bibliography.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -1239,10 +1239,7 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 27.
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-{C:/Users/herin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] (main.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 2.
-)
+{C:/Users/herin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] (main.toc)
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
@@ -1250,69 +1247,48 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 \include{chapters/2026-ClassNotes}
-                                        [1
+l.30 \include{chapters/Mynotes}
+                                [1
 
 ]
-\openout2 = `chapters/2026-ClassNotes.aux'.
+\openout2 = `chapters/Mynotes.aux'.
 
- (chapters/2026-ClassNotes.tex
+ (chapters/Mynotes.tex
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4.
-(C:\Users\herin\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [2
 
 
-{C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [3]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 130.
- (C:\Users\herin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [4] [5] [6] [7]) [8]
-\openout2 = `chapters/AlgebraicGroups.aux'.
-
- (chapters/AlgebraicGroups.tex
-Chapter 2.
-[9
-
-
-
-
-] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]) [21]
+]
 \openout2 = `bibliography.aux'.
 
 
 No file bibliography.tex.
-[22
 
+LaTeX Warning: Empty bibliography on input line 38.
 
-
-
-
-
-] (main.aux (chapters/2026-ClassNotes.aux) (chapters/AlgebraicGroups.aux) (bibliography.aux))
+(main.aux (chapters/Mynotes.aux) (bibliography.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 02438CFFAB3D8F73E99A472278E5FD83;1283.
+(rerunfilecheck)             Checksum: 9AED0F01DAA22518842EA492A576D84C;157.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40972 strings out of 467871
- 841970 string characters out of 5418376
- 1681600 words of memory out of 5000000
- 68981 multiletter control sequences out of 15000+600000
- 690058 words of font info for 85 fonts, out of 8000000 for 9000
+ 40157 strings out of 467871
+ 824578 string characters out of 5418376
+ 1658182 words of memory out of 5000000
+ 68363 multiletter control sequences out of 15000+600000
+ 665569 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 132i,23n,135p,779b,1242s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (23 pages, 423233 bytes).
+ 132i,6n,135p,794b,852s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/herin/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb>
+Output written on main.pdf (3 pages, 129911 bytes).
 PDF statistics:
- 484 PDF objects out of 1000 (max. 8388607)
- 176 named destinations out of 1000 (max. 500000)
- 229 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 90 PDF objects out of 1000 (max. 8388607)
+ 5 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 
