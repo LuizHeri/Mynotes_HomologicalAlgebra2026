@@ -1,0 +1,506 @@
+\chapter{Exercises}
+\section{List 1}
+\begin{dang}
+    \textbf{Problem 1}. State the definition of monomorphism, 
+    and prove that an injective function of sets is a monomorphism in Set.
+\end{dang}
+Solution: A monomorphism $f\in\text{Hom}_{\callC}(B,C)$ is a morphism that is left cancelative in the sense that 
+for any object $A$ and morphisms $g,h\in\text{Hom}_{\callC}(A,B)$, we have:
+\begin{equation}
+    fg = fh \Rightarrow g= h.
+\end{equation}
+Now, if $\callC = \textbf{Set}$, the equality $fg=fh$ implies $f(g(a))=f(h(a)),\;\forall a\in A$ and if $f$ injective, by 
+definition, we have $g(a)=h(a),\;\forall a\in A$, i.e., $g=h$.
+
+\begin{dang}
+    \textbf{Problem 2}. Prove that $h:\mathbb{Z}\hookrightarrow \mathbb{Q}$ is an epimorphism in Ring.
+\end{dang}
+Solution: Let $f,g:\bbQ\to R$ be two ring morphisms such that $fh=gh$, i.e., $f(n)=g(n),\;\forall n\in\bbZ$. Here, we 
+assume that a morphism in Ring send unity to unity, so $f(1)=g(1)=1_R$. Furthermore, since $\bbQ$ is a field, 
+$f:\bbQ\hookrightarrow R$ and $f(\bbQ^\times)\subset R^\times$. In particular $m1_R\in R^\times$. Now we have
+\begin{equation}
+    m1_R(f(\frac{1}{m})-g(\frac{1}{m})) = 0\Rightarrow f(\frac{1}{m})=g(\frac{1}{m}).
+\end{equation}
+This proves that $f=g$.
+
+
+\begin{dang}
+    \textbf{Problem 3}. Write the proof that any two terminal objects in a category 
+    $\mathcal{C}$ are isomorphic to each other.
+\end{dang}
+Solution: Let $T,T^\prime$ be two terminal objects in $\mathcal{C}$. Let $f\in\Hom_{\callC}(T,T^\prime)$ 
+and $T^\prime\in\Hom_{\callC}(T^\prime,T)$, then $f\circ g\in\Hom_{\callC}(T,T)=\{\mathds{1}_{T}\}$. Therefore 
+$fg = \mathds{1}_{T}$ and in a similar way we see that $gf = \mathds{1}_{T^\prime}$. This proves that 
+$f$ is an isomorphism.
+
+\begin{dang}
+    \textbf{Problem 4}. State an "explicit" definition of the free product \(G*H\) of groups \(G\) and \(H\). 
+Prove that the free product is a coproduct in Grp.
+\end{dang}
+Solution: Let $A = G \textstyle\coprod H$, we define
+\begin{equation}
+    G*H = \coprod_{n\geq1}A^n\bigg/\sim 
+\end{equation}
+where we the equivalence relation is defined by 
+\begin{equation}
+    \begin{aligned}
+        &(a_1,\dots, a_i,a_{i+1},\dots,a_n)\sim (a_1,\dots, a_ia_{i+1},\dots,a_n)
+        \text{ if }a_1,a_2\in G\text{ or } a_1,a_2\in H\\
+        &(a_1,\dots, a_{i-1},a_i,a_{i+1} \dots, a_n)\sim (a_1,\dots, a_{i-1},a_{i+1} \dots, a_n)\;\text{ if } 
+        a_i = 1_G \text{ or } a_i = 1_H
+    \end{aligned}
+\end{equation}
+The multiplication is defined by 
+\begin{equation}
+    [(a_1,\dots,a_n)]* [(b_1,\dots, b_m)] = [(a_1,\dots,a_n,b_1,\dots, b_m)].
+\end{equation}
+By the equivalence relations defined above, the multiplication rule is clearly well defined.\par  
+We see that $(G*H, *)$ is a group. The associativity and existence of unity is clear and 
+the inverse operation is defined by 
+\begin{equation}
+    [(a_1,a_2,\dots,a_n)]^{-1}=[(a_n^{-1},\dots, a_2^{-1},a_1^{-1})].
+\end{equation}
+Now we define morphims
+\begin{equation}
+    i_1: G \to G*H: g\mapsto [(g)],\; i_2:H\to G*H: h\mapsto [(h)].
+\end{equation}
+We claim that $(G*H, i_1,i_2)$ is a coproduct of $G$ and $H$. Suppose that we have morphisms 
+$f_1: G\to K, f_2:H\to K$, then we define a morphism 
+\begin{equation}
+  f:  G*H \to K: [(a_1,\dots, a_n)]\mapsto  f_{j_1}(a_1)\cdots f_{j_n}(a_n)
+\end{equation}
+where we let $j_k=1\;(\text{resp. }2)$ if $a_k\in G\;(\text{resp. }H)$. Furthermore, we see that 
+$f i_j=f_j,\;j=1,2$. For uniqueness, we observe that if $h:G*H\to K$ is a morphism, such that 
+$h i_j = f_j,\;j=1,2$, then $h([(g)])=f_1(g)$ and $h([(h)])=f_2(h)$. So 
+\begin{equation}
+    h([(a_1,\dots, a_n)])=h([(a_1)]*\cdots*[(a_n)])=h([a_1])\cdots h([(a_n)])
+\end{equation}
+and we see that $h([(a_k)])=f_{j_k}(a_k)$ as defined above, therefore $h=f$.
+
+
+
+\begin{dang}
+\textbf{Problem 5}. Let $\mathcal{C}$ be a pre-additive category and $X,Y\in \mathcal{C}$ . 
+Show that if a product $X\times Y$ of $X$ and $Y$ exists, then $X\times Y$ is also a coproduct of $X$ and $Y$ .   
+\end{dang}
+Solution: A product $X\times Y$ comes with projections $p_1:X\times Y\to X$ and $p_2:X\times Y\to Y$ such that the following universal
+property is satisfied. 
+\begin{center}
+    \begin{tikzcd}
+         &Z\arrow[d,dashed,"\exists !h"]\arrow[ddl,bend right = 30, swap,"f_1"]\arrow[ddr,bend left = 30, "f_2"]&\\
+         &X\times Y\arrow[dl,swap,"p_1"]\arrow[dr,"p_2"]&\\
+         X&&Y
+    \end{tikzcd}
+\end{center}
+So we define $i_1:X\to X\times Y$ and $i_2:Y\to X\times Y$ using this universal property:
+\begin{center}
+    \begin{tikzcd}
+        &X\arrow[d,dashed,"\exists !i_1"]\arrow[ddl,bend right = 30, swap,"\mathds{1}_X"]
+        \arrow[ddr,bend left = 30, "0_{XY}"]&\\
+         &X\times Y\arrow[dl,swap,"p_1"]\arrow[dr,"p_2"]&\\
+         X&&Y
+    \end{tikzcd}
+
+    \begin{tikzcd}
+        &Y\arrow[d,dashed,"\exists !i_1"]\arrow[ddl,bend right = 30, swap,"0_{YX}"]
+        \arrow[ddr,bend left = 30, "\mathds{1}_Y"]&\\
+         &X\times Y\arrow[dl,swap,"p_1"]\arrow[dr,"p_2"]&\\
+         X&&Y
+    \end{tikzcd}
+\end{center}
+So we have the following properties 
+\begin{equation}\label{equation: relations between projections and injections}
+    \left\{\begin{aligned}
+        &\mathds{1}_X=p_1i_1,\; p_2i_1 = 0_{XY}\\
+        &\mathds{1}_Y = p_2i_2,\;p_1i_2 = 0_{YX}
+    \end{aligned}\right.
+\end{equation}
+Now, we claim that 
+\begin{equation}
+    i_1p_1+i_2p_2 = \mathds{1}_{X\times Y}\quad(*)
+\end{equation}
+which can be seen by the diagram below and the universal 
+property of the product.
+\begin{center}
+    \begin{tikzcd}
+        &X\times Y\arrow[d,dashed,"i_1p_1+i_2p_2"]\arrow[ddl,bend right = 50, swap,"p_1"]
+        \arrow[ddr,bend left = 50, "p_2"]&\\
+         &X\times Y\arrow[dl,swap,"p_1"]\arrow[dr,"p_2"]&\\
+         X&&Y
+    \end{tikzcd}
+\end{center}
+Now, suppose that we have morphisms $f_1:X\to Z, f_2:Y\to Z$. Then if we define 
+$h=f_1p_1+f_2p_2$, the diagram below commutes.
+\begin{center}
+    \begin{tikzcd}
+        &Z&\\  
+        &X\times Y\arrow[u, dashed, "h"]&\\ 
+        X\arrow[ur, swap,"i_1"]\arrow[uur, bend left = 30, "f_1"]&&Y\arrow[ul, "i_2"]\arrow[uul,swap, bend right = 30, "f_2"]
+    \end{tikzcd}
+\end{center}
+Furthermore, relations~(\ref{equation: relations between projections and injections}) and equation (*) guarantees that 
+this is the unique expression possible for $h$ that makes the above diagram commutes.
+
+
+\begin{dang}
+    \textbf{Problem 6}. Show that existence of binary products implies existence of all finite \(n\)-ary products 
+    for \(n\geq 2\).
+\end{dang}
+Solution: By a finite $n$-ary product $(n\geq2)$, we mean an object $X=\prod_{i=1}^n X_i$ with morphims 
+$p_i: X\to X_i$ satisfying the following universal property. 
+Take a colection of morphims $f_i:Y\to X_i,\;(i=1,\dots,n)$, then there exist an unique morphism $f: Y\to X$ such that 
+$p_if = f_i,\;\forall i$. By induction, assume that there exist all finite $(n-1)-$ary products and let 
+$X^\prime =\prod_{i=1}^{n-1}X_i$. We want to show that $X=X^\prime \times X_n$ satisfies the universal property for 
+a $n-$ary product. The projections are obtained as follows: we have the projection 
+$p_n:X\to X_n$ and for $i<n$ we compose the projection 
+$q:X\to X^\prime$ with the $i$th projection $p_i^\prime:X^\prime\to X_i$ to get $p_i:X\to X_i$.\par 
+
+Now assume we have morphisms $f_i:Y\to X,\;(i=1,\dots,n)$. Then, by the universal property of the finite 
+$(n-1)-$ary product, there exists a (unique) morphism $f^\prime:Y\to X^\prime$ such that 
+$p_i^\prime f^\prime = f_i,\; i<n$. Now we have the diagram:
+\begin{center}
+    \begin{tikzcd}
+        &Y\arrow[d, dashed, "\exists!h"]\arrow[ldd,swap, bend right = 30, "f^\prime"]\arrow[rdd, bend left = 30, "f_n"]&\\
+        &X\arrow[ld,"q"]\arrow[dr,swap, "p_n"]&\\
+        X^\prime&& X_n
+    \end{tikzcd}
+\end{center}
+Now we observe that 
+\begin{equation}
+    p_ih=(p_i^\prime q)h=p_i^\prime(qh)=p_i^\prime f^\prime = f_i,\; i<n.
+\end{equation}
+This show existence of $h$. Now, for uniqueness, suppose that $h^\prime$ is such that 
+$p_i h^\prime=f_i,\;\forall i$. Then, for $i<n$ we have $p_i^\prime(h^\prime q)=f_i$. So by the universal property of the 
+finite $(n-1)-$ary product $X^\prime$, we must have $h^\prime q = f^\prime$. Then, by applying the universal 
+property of the product $X=X^\prime\times X_n$, we must have $h^\prime = h$.
+
+\begin{dang}
+    \textbf{Problem 7}. Consider a composition
+\[
+A\longrightarrow B\longrightarrow C
+\]
+in an abelian category, in which \(g\circ f = 0\). Using only universal properties, 
+show that there is a canonical morphism from \(\operatorname{im}(f)\) to \(\ker(g)\). 
+[Recall \(\operatorname{im}(f) = \ker(\operatorname{coker}(f))\) by definition.]
+\end{dang}
+Solution: From the universal property of the cokernel we have the diagram.
+\begin{center}
+    \begin{tikzcd}
+        A\arrow[rr,"f"]\arrow[dd]&&B\arrow[dd,"g"]\arrow[ld,"p"]\\
+        &\text{Coker}(f)\arrow[rd,dashed,"\exists!\tilde{g}"]&\\
+        0\arrow[ur]\arrow[rr]&&C
+    \end{tikzcd}
+\end{center}
+Now, by the universal property of the kernel, we have:
+\begin{center}
+    \begin{tikzcd}
+        A\arrow[rr,"f"]\arrow[dd]\arrow[dr,dashed,swap,"\exists!\tilde{f}"]&&B\arrow[dd,"p"]\arrow[dr,"g"]&\\
+        &\text{Ker}(p)=\text{Im}(f)\arrow[dl]\arrow[ru,swap,"i"]&&C\\
+        0\arrow[rr]&&\text{coker}(f)\arrow[ru,swap,"\tilde{g}"]&
+    \end{tikzcd}
+\end{center}
+Finally, by applying the universal property of the kernel again, we have:
+\begin{center}
+    \begin{tikzcd}
+        \text{Im}(f)\arrow[dd]\arrow[rr,"i"]\arrow[rd,dashed,"\exists!\gamma"]&&B\arrow[dd,"g"]\\
+        &\text{Ker}(g)\arrow[ru]\arrow[ld]&\\
+        0\arrow[rr]&&C
+    \end{tikzcd}
+\end{center}
+as desired.
+
+\begin{dang}
+    \textbf{Problem 8}. Let \(G:\mathbf{Ab}\to \mathbf{Set}\) be the forgetful functor, and let \(F:\mathbf{Set}\to \mathbf{Ab}\) 
+    be the functor of forming a free abelian group. Show that \(F\) is left adjoint to \(G\).
+\end{dang}
+Solution: We have the map 
+\begin{equation}
+    \text{Hom}_{\textbf{Ab}}(F(X),Y) \rightarrow \text{Hom}_{\textbf{Set}}(X,G(Y)): f\mapsto f|_X
+\end{equation}
+Here, we let 
+$F(X) = \{f:X\to \bbZ: f(x)\neq 0\text{ for a finite number of } x\in X\}$ and denote
+$\hat{x}\in F(X)$ for the map defined by $\hat{x}(y)=\delta_{xy}$. So we see that the 
+set theoretic map $\iota:X\to F(X):x\to \hat{x}$ is an injection and this justifies 
+the notation $f|_X$ used in $(*)$. Moreover, show that this map is an isomorphism is 
+equivalent to show that we have the following universal property: For any set map of sets 
+$f:X\to G(Y)$, there exists a unique morphism $\hat{f}:F(X)\to Y$ such that $\hat{f}\iota = f$. So we have no choice but 
+define $\hat{f}(\hat{x})=f(x)$ and extend to $F(X)$ by $\bbZ-$linearity, this defines $\hat{f}$ uniquely.
+
+
+
+\begin{dang}
+\textbf{Problem 9}. Compute $(\mathbb{Z} / 5)\otimes_{\mathbb{Z}}(\mathbb{Z} / 6)$ 
+and $(\mathbb{Z} / p^{2})\otimes_{\mathbb{Z}}(\mathbb{Z} / p)$ where $p$ is a prime.
+\end{dang}
+Solution: First we claim that $(\mathbb{Z} / 5)\otimes_{\mathbb{Z}}(\mathbb{Z} / 6)=(0)$. In fact, if 
+$a\otimes b\in (\mathbb{Z} / 5)\otimes_{\mathbb{Z}}(\mathbb{Z} / 6)$, then since $6^2\equiv1\mod5$, we have
+\begin{equation}
+    a\otimes b = a\cdot 6^2\otimes b = a\cdot6\otimes 6\cdot b = a\cdot6\otimes 0=0.
+\end{equation}
+For the second group, we claim that $(\mathbb{Z} / p^{2})\otimes_{\mathbb{Z}}(\mathbb{Z} / p)\cong\bbZ/p$. To show this, 
+we show that $\bbZ/p$ satisfies the universal property of the tensor product (here we will use the notation of 
+problem 10). Let $\varphi_0:\bbZ/p^2\times\bbZ/p\to \bbZ/p:([m],[n])\mapsto [mn]$, it's a well defined balanced map, i.e., 
+$\varphi_0\in\text{Bal}_{A,B}(\bbZ/p)$. In particular $\bbZ/p$ is generated by the image of $\varphi_0$. Now, let 
+$f\in \text{Bal}_{A,B}(X)$, we want to define $\tilde{f}$ in such a way the following diagram commutes.
+\begin{center}
+    \begin{tikzcd}
+    \bbZ/p^2\times\bbZ/p\arrow[d,swap,"f"]\arrow[r,"\varphi_0"]&\bbZ/p\arrow[ld,"\tilde{f}"]\\
+    X&
+    \end{tikzcd}
+\end{center}
+So we set $\tilde{f}([n])=f(1,[n])$, which is well defined while makes the diagram commutes.
+
+\begin{dang}
+\textbf{Problem 10}. Let $R$ be a unital ring. In order to formulate the definition of tensor product of $R$-modules, 
+we introduce a definition:\par 
+\textbf{definition 0.1}. Let $A$ be a right $R$-module and $B$ a left $R$-module, and $X$ an abelian group. 
+A balanced map $f\in \operatorname{Bal}_{A,B}(X)$ is a function $f:A\times B\to X$ such that
+
+\[
+f(a_{1} + a_{2},b) = f(a_{1},b) + f(a_{2},b)\quad \mathrm{for~all~}a_{1},a_{2}\in A\mathrm{~and~}b\in B
+\]
+\[
+f(a,b_{1} + b_{2}) = f(a,b_{1}) + f(a,b_{2})\quad \mathrm{for~all~}a\in A\mathrm{~and~}b_{1},b_{2}\in B
+\]
+\[
+f(ar,b) = f(a,rb)\quad \mathrm{for~all~}a\in A,b\in B\mathrm{~and~}r\in R.
+\]
+
+Now a tensor product of a right $R$-module $A$ with a left $R$-module $B$ is an abelian group $A \otimes_R B$ 
+together with a $\varphi_0 \in \operatorname{Bal}_{A,B}(A \otimes_R B)$, such that for any balanced map $f$ as below, 
+there exists a unique linear map $\tilde{f}$ making the diagram commute.
+
+\begin{center}
+    \begin{tikzcd}
+    A\times B\arrow[dr,swap,"f"]\arrow[rr,"\varphi_0"] & & A\otimes_{R}B\arrow[ld,"\tilde{f}"]\\ 
+    & X&
+    \end{tikzcd}
+\end{center}
+
+Verify that
+
+\[
+A\otimes_{R}B\cong Q = \frac{A\otimes_{\mathbb{Z}}B}{\langle ar\otimes b - a\otimes rb\mid a\in A,b\in B,r\in R\rangle}.
+\]
+\end{dang}
+Solution:  To prove the asserted isomorphism, we show that the quotient of abelian groups $Q$ satisfies the universal 
+property of the tensor product $A\otimes_RB$. Let $f\in\text{Bal}_{A,B}(X)$, then $f$ is balanced by viewing $A,B$ 
+as abelian groups. By the universal property of $A\otimes_{\bbZ}B$, there exist maps
+$\hat{\varphi}_0$ and $\hat{f}$, such that:
+\begin{center}
+    \begin{tikzcd}
+    A\times B\arrow[dr,swap,"f"]\arrow[rr,"\hat{\varphi}_0"] & & A\otimes_{\bbZ}B\arrow[ld,"\hat{f}"]\\ 
+    & X&
+    \end{tikzcd}
+\end{center}
+Now, since $f\in \text{Bal}_{A,B}(X)$, we have 
+\begin{equation}
+    \Ker(\hat{f})\supset \langle ar\otimes b - a\otimes rb\mid a\in A,b\in B,r\in R\rangle.
+\end{equation}
+Then, there exists $\tilde{f}$ such that the following diagram commutes:\begin{center}
+    \begin{tikzcd}
+    A\times B\arrow[dr,swap,"f"]\arrow[rr,"\hat{\varphi}_0"] & & A\otimes_{\bbZ}B\arrow[ld,"\hat{f}"]\arrow[r,"p"]&
+    Q \arrow[lld,bend left = 20,"\tilde{f}"]\\ 
+    & X& &
+    \end{tikzcd}
+\end{center}
+Now, by construction, the quotient $Q$ is generated by the image of the map 
+$\varphi_0 = p\hat{\varphi}_0$ and since $f = \tilde{f}\varphi_0$ we see that $\tilde{f}$ is uniquely determined 
+by $f$. Therefore $(Q,\varphi_0)$ satisfies the universal property for the tensor product $A\otimes_RB$ and 
+$Q\cong A\otimes_RB$.
+
+
+
+
+
+
+\section{List 2}
+\begin{dang}
+Let $A$ be an abelian group, and consider the action
+\[
+A \times A \longrightarrow A
+\]
+given by addition in the group. Does this action make $A$ into an
+$A$-module? Justify your answer.
+\end{dang}
+
+\begin{dang}
+The homologies $H_n(G,A)$ of a group $G$ with coefficients in the
+$G$-module $A$ are the derived functors of the coinvariants functor
+\[
+(-)_G = \mathbb{Z} \otimes_{\mathbb{Z}G} (-).
+\]
+(where $\mathbb{Z}$ is the trivial $G$-module). Using a convenient
+projective resolution of $\mathbb{Z}$, or otherwise, compute group
+homology $H_n(G,A)$ where $G$ is the cyclic group $\mathbb{Z}/n$ and
+$A$ is a trivial $G$-module.
+\end{dang}
+
+\begin{dang}
+    \textbf{The Curry adjunction}:
+Let $A \in \mathbf{Set}$ be a fixed set, and let
+$L : \mathbf{Set} \to \mathbf{Set}$ and
+$R : \mathbf{Set} \to \mathbf{Set}$ be the functors
+\[
+L(X) = X \times A
+\qquad\text{and}\qquad
+R(X) = \operatorname{Hom}_{\mathbf{Set}}(A,X).
+\]
+Prove that $L$ is left adjoint to $R$, i.e., construct a natural
+isomorphism
+\[
+\operatorname{curry} :
+\operatorname{Hom}_{\mathbf{Set}}(X \times A,Y)
+\longrightarrow
+\operatorname{Hom}_{\mathbf{Set}}
+\bigl(X,\operatorname{Hom}_{\mathbf{Set}}(A,Y)\bigr).
+\]
+\end{dang}
+
+\begin{dang}
+Prove the following lemma from class.
+
+\medskip
+
+\noindent
+\textbf{Lemma 0.1.}
+If $L : \mathcal{A} \to \mathcal{B}$ is a functor with right adjoint
+$R$, and
+\[
+\eta : \operatorname{Id} \Rightarrow R \circ L
+\qquad\text{and}\qquad
+\varepsilon : L \circ R \Rightarrow \operatorname{Id}
+\]
+are as in class (see Corollary 3.4.9). Then
+\[
+\varepsilon_{L(X)} \circ L(\eta_X) = \operatorname{Id}_{L(X)}.
+\]
+
+\medskip
+
+\noindent
+\textit{Hint:}
+There are several equivalent definitions of adjunction. The one I have
+given is in terms of a natural isomorphism
+\[
+\beta_{X,Y} :
+\operatorname{Hom}(L(X),Y)
+\longrightarrow
+\operatorname{Hom}(X,R(Y)).
+\]
+There are other definitions, in particular one that is in terms of two
+natural transformations
+\[
+\eta : \operatorname{Id}_{\mathcal A} \Rightarrow R \circ L,
+\qquad
+\varepsilon : L \circ R \Rightarrow \operatorname{Id}_{\mathcal B}.
+\]
+
+One of the axioms in this second definition is
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+L
+    \arrow[r, "L(\eta)"]
+    \arrow[dr, "\operatorname{Id}_L"']
+&
+LRL
+    \arrow[d, "\varepsilon_L"]
+\\
+&
+L
+\end{tikzcd}
+\]
+
+The identity to be proved follows fairly easily from this axiom. So the
+exercise, really, is to understand this second definition of adjoint
+functors, and why it follows from the first.
+\end{dang}
+
+\begin{dang}
+Deduce the classical version of Hilbert 90 from the more general
+cohomological statement, using the ``convenient complex'' for
+$H^*(\mathbb{Z}/n,-)$ that we met in class:
+
+\medskip
+
+\noindent
+\textbf{Theorem 0.2.}
+Let $L/K$ be a Galois extension, and suppose that
+\[
+G = \operatorname{Gal}(L/K)
+\]
+is cyclic,
+\[
+G = \langle \sigma \rangle \cong \mathbb{Z}/n.
+\]
+Then for every $\alpha \in L$ of norm $N(\alpha)=1$, there exists
+$\beta \in L$ such that
+\[
+\alpha = \frac{\sigma(\beta)}{\beta}.
+\]
+\end{dang}
+
+\begin{dang}
+Let $G$ be a group and $N \subset G$ a normal subgroup. If $A$ is a
+$G$-module, verify that the invariants $A^N$ carries a natural action
+of the quotient group $G/N$. Thus we may consider the functor
+\[
+(-)^N :
+G\text{-mod}
+\longrightarrow
+(G/N)\text{-mod}.
+\]
+\end{dang}
+
+\begin{dang}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a left exact functor, and
+$E : \mathcal{B} \to \mathcal{C}$ an exact functor. Assume
+$\mathcal{A}$ has enough injectives. Prove that
+\[
+\bigl[R^n(E \circ F)\bigr](A)
+\cong
+\bigl[E \circ R^nF\bigr](A)
+\]
+for all $A \in \mathcal{A}$. Deduce that there exists a natural action
+of $G/N$ on the cohomology
+\[
+H^*(N,A)
+\]
+(where $G,N,A$ as in Exercise 6).
+\end{dang}
+
+\begin{dang}
+Let $G$ be a group and $N \subset G$ a normal subgroup, and $A$ a
+$G$-module. Consider the bar complex, whose terms are
+\[
+C^p(N,A) = \operatorname{Maps}(N^p \to A).
+\]
+Check that
+\[
+[g \cdot \varphi](n_1,\ldots,n_p)
+=
+g\varphi
+\bigl(g^{-1}n_1g,\ldots,g^{-1}n_pg\bigr),
+\]
+for all $p \in \mathbb{Z}_+$, defines a $G$-action, and a
+$G/N$-action, on
+\[
+H^*(N,A).
+\]
+\end{dang}
+
+\begin{dang}
+We continue in the context of the previous exercise. But now $G$ is
+the symmetric group $S_3$ and $N \cong \mathbb{Z}/3$ is the normal
+subgroup generated by a $3$-cycle. Consider $\mathbb{Z}$ equipped with
+the trivial $G$-module structure. Determine the $G/N$-module structure
+of the
+\[
+H^k(N,\mathbb{Z}).
+\]
+\end{dang}
+
+\begin{dang}
+\textbf{Optional challenge question}
+Show that the $G/N$-actions of Exercises 7 and 8, coincide.
+\end{dang}
