@@ -1,6 +1,115 @@
 \chapter{Some notes from 2026 - class}
 \section{Derived functors}
 \begin{itemize}
+    \item(Abelian Categories)\TODO 
+    \item(Ajoints) 
+        Take a functor $F:\callC\to\catset$, a object $A\in\callC$ and an element $a\in FA$. Define the map 
+        \begin{equation}
+            a_B:\Hom_{\callC}(A,B)\to F(B):k\mapsto F(k)a.
+        \end{equation}
+        Then $\eta(a):\Hom_{\callC}(A,-)\Rightarrow F$ is a natural transformation which sends $B\mapsto a_B$. 
+        Moreover, we have a bijection 
+        \begin{equation}
+            A\ni a\mapsto \eta(a)\in\{\eta:\Hom_{\callC}(A,-)\Rightarrow F\}.
+        \end{equation}
+        The inverse of this map is given by 
+        \begin{equation}
+            \{\eta:\Hom_{\callC}(A,-)\Rightarrow F\}\to A: \eta_A\mapsto \eta_A(\mathds{1}_A).
+        \end{equation}
+        In fact, if $a=\eta_A(\mathds{1}_A)$, then 
+        \begin{equation}
+            \begin{split}
+                a_B(k)&=F(k)a\\
+                &=F(k)(\eta_A(\mathds{1}_A))\\
+                &=\eta_B\Hom_{\callC}(A,k)(\mathds{1}_A)\quad(\text{because }\eta_A\text{ is a nat. transf.})\\
+                &=\eta_B(k\circ \mathds{1}_A)\\
+                &=\eta_B(k). 
+            \end{split}
+        \end{equation}
+        Therefore $a_B=\eta_B$. In the context of the Yoneda's lemma, we say that the pair 
+        $(A,a),\;a=\eta_A(\mathds{1}_A)$ represents the natural transformation $\eta_A:\Hom_{\callC}(A,-)\Rightarrow F$.
+
+        \begin{definition}
+            Let $F:\callC\to \callD$ be a functor. Then we say that the pair $(U,u)$ is a universal from $B$ to $F$ if 
+            for any $g\in \Hom_{\callD}(B,FA)$ there exists a unique $\tilde{g}\in\Hom_{\callC}(U,A)$ such that 
+            \begin{center}
+                \begin{tikzcd}
+                    B\arrow[r,"u"]\arrow[d,"g"]&F(U)\arrow[ld,dashed,"F(\tilde{g})"]  \\ F(A) &
+                \end{tikzcd}
+            \end{center}
+        \end{definition}
+        \begin{example}
+            Let $\fr{g}$, then the universal enveloping algebra $\mathcal{U}(\fr{g})$ is a universal from 
+            $\fr{g}$ to the functor $F:\catass\to\catlie$ that takes an associative algebra $A$ and returns the Lie algebra
+            $(A,[\cdot,\cdot])$ where $[a,b]=ab-ba$.
+        \end{example}
+    
+    \begin{proposition}
+        Let $F:\callC\to \callD$ be a functor. Suppose that for each $B\in\callD$, there exists a universal 
+        $(GB, u_B)$ from $B$ to $F$. We claim that $G$ is a functor from $\callD\to\callC$ and there exist a natural 
+        isomorphism $\Hom_{\callC}(GB,-)\Rightarrow\Hom_{\callD}(B,-)\circ F$. In this condition we say that 
+        $G$ is left adjoint to $F$.
+    \end{proposition}
+    Proof: Let $g\in\Hom_{\callD}(B,FA)$, then by definition of the universal, there exists 
+    a (unique) $\tilde{g}\in\Hom_{\callC}(GB,A)$ such that the diagram commutes. 
+    \begin{center}
+        \begin{tikzcd}
+           B\arrow[r,"u_B"]\arrow[d,"g"] & FGB\arrow[dl,dashed,"F(\tilde{g})"]   \\   FA     &
+        \end{tikzcd}
+    \end{center}
+    So the map $\eta_{B,A}:\Hom_{\callC}(GB,A)\to\Hom_{\callD}(B,FA):f\mapsto F(f)u_B$ is bijective (in fact, 
+    the universal condition is equivalent to bijection of $\eta_{B,A}$).
+    Therefore $A\mapsto \eta_{B,A}$ gives a natural isomorphism $\Hom_{\callC}(GB,-)\Rightarrow\Hom_{\callD}(B,-)\circ F$.
+    \par 
+    
+    Now, it remains to prove that $G$ is a functor. So if $B,B^\prime\in\callD$ and $h\in\Hom_{\callD}(B,B^\prime)$, 
+    we need to construct a morphism $G(h)\in\Hom_{\callC}(GB,GB^\prime)$, we define it to be the unique morphism making 
+    the diagram below commute. 
+    \begin{center}\label{diagram: property of FGB}
+        \begin{tikzcd}
+           B\arrow[r,"h"]\arrow[d, "u_B"] &  B^\prime \arrow[d,"u_{B\prime}"]  \\  FGB\arrow[r,dashed,"FG(h)"]  &   FGB^\prime
+        \end{tikzcd}
+    \end{center}
+    Since $(GB, u_B)$ are universals, it's easy to see that $G(h\circ h^\prime)=G(h)\circ G(h^\prime)$ and 
+    $G(\mathds{1}_B)=\mathds{1}_{GB}$.\qed
+    
+    \begin{remark}
+        The concept of universal has a dual: Let $G:\callD\to\callC$ be a functor. We say that 
+        $(V,v)$ is a universal from $G$ to $A\in\callC$ if for any morphism 
+        $f\in\Hom_{\callC}(GB,A)$, there exist a (unique) morphism $\tilde{f}\in\Hom_{\callD}(B,V)$ such that 
+        the diagram below commutes.
+        \begin{center}
+            \begin{tikzcd}
+               A & G(V)\arrow[l,swap,"v_A"] \\ G(B)\arrow[u,"f"]\arrow[ru,dashed,swap,"G(\tilde{f})"]&
+            \end{tikzcd}
+        \end{center}
+    \end{remark}
+    \begin{proposition}
+        Let $G$ be as in the previous proposition. For every $A\in\callC$, define 
+        $v_A:GFA\to A$ as the unique morphism making the diagram below commutes.
+        \begin{center}
+            \begin{tikzcd}
+                FA\arrow[r,"u_{FA}"]\arrow[d,"\mathds{1}_{FA}"]&  FGFA\arrow[ld,dashed,"F(v_A)"] \\  FA &
+            \end{tikzcd}
+        \end{center}
+        Then for each $A\in\callC$, the pair $(FA,v_A)$ is a universal from $G$ to $A$. In this condition there exist a natural isomorphism 
+        $\Hom_{\callD}(-,FA)\Rightarrow \Hom_{\callC}(-,A)\circ G$. So we say that $F$ is right adjoint to $G$.
+    \end{proposition}
+    Proof: The claim that $(FA,v_A)$ is a universal from $G$ to $A$ is equivalent to 
+    the claim that $\xi_{B,A}:\Hom_{\callD}(B,FA)\to\Hom_{\callC}(GB,A):f\mapsto v_AG(f)$ is a bijection. So we prove this instead. 
+    We have 
+    \begin{equation}
+        \begin{split}
+            \eta_{B,A}\xi_{B,A}(f)&=F(v_AG(f))u_B\\
+            &=F(v_A)FG(f)u_B\quad(F\text{ is a functor})\\
+            &=F(v_A)u_{FA}f\quad(\text{definition of }G(f)\text{, see diagram~(\ref{diagram: property of FGB})})\\
+            &=\mathds{1}_{FA}f\\
+            &=f.
+        \end{split}
+    \end{equation}
+    So we see that $\xi_{B,A}=\eta_{B,A}^{-1}$, which is a bijection.\qed 
+
+
     \item(Homotopy)
     We define a equivalence relation on $\Hom (C_\bullet, D_\bullet)$ as follows: 
     Let $f,g: (C_\bullet,d)\to (D_\bullet,d)$ be two morphims of complexes, then we say that $f\sim g$ 
@@ -194,7 +303,7 @@
     morphism, i.e., $fg\sim\text{Id}_{I^\bullet}\Rightarrow F(f)\circ F(g)\sim \text{Id}_{F(I^\bullet)}$. In 
     a similar way we see that $F(g)\circ F(f)\sim \text{Id}_{F(J^\bullet)}$, so $H^n(F(I^\bullet))\cong H^n(F(J^\bullet))$. 
     The second one also follows directly from the lemmas above.\par 
-    \TODO Prove (3)
+    \TODO Prove (3), use Horseshoe lemma  
 
     \item(Projectives)
     \item(Group cohomology)
