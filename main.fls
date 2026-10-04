@@ -380,6 +380,9 @@ INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr10.
 INPUT .\main.aux
 INPUT .\main.aux
 INPUT main.aux
+INPUT .\chapters\test_chapter.aux
+INPUT .\chapters\test_chapter.aux
+INPUT chapters\test_chapter.aux
 INPUT .\chapters\Mynotes.aux
 INPUT .\chapters\Mynotes.aux
 INPUT chapters\Mynotes.aux
@@ -473,6 +476,7 @@ INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\herin\AppData\Local\MiKTeX\fonts\tfm\public\rsfs\rsfs10.tfm
 OUTPUT main.toc
+OUTPUT chapters\test_chapter.aux
 INPUT .\chapters\Mynotes.tex
 INPUT .\chapters\Mynotes.tex
 OUTPUT chapters\Mynotes.aux
@@ -520,6 +524,9 @@ INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx6.
 INPUT C:\Users\herin\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
 OUTPUT bibliography.aux
 INPUT main.aux
+INPUT .\chapters\test_chapter.aux
+INPUT .\chapters\test_chapter.aux
+INPUT chapters\test_chapter.aux
 INPUT .\chapters\Mynotes.aux
 INPUT .\chapters\Mynotes.aux
 INPUT chapters\Mynotes.aux

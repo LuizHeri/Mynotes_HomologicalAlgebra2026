@@ -363,7 +363,7 @@ Now we have
     \end{split}
 \end{equation}
 Now, if $A$ is a trivial module, then $ga=a,\forall g\in G$. Therefore $\text{Ker}(g-1)=A$ and 
-$\text{Im}(N)=nA$. Therefore we get 
+$\text{Im}(N)=nA$. So we get 
 \begin{equation}
    H_m(G,A) =\left\{\begin{aligned}
         &A/nA,\;m \text{ odd};\\
@@ -594,9 +594,7 @@ H^\bullet(N,A)
 \]
 (where $G,N,A$ as in Exercise 6).
 \end{dang}
-Solution:
-
-
+Solution: 
 
 \begin{dang}
     \textbf{Problem 8}.
@@ -618,9 +616,53 @@ $G/N$-action, on
 H^\bullet(N,A).
 \]
 \end{dang}
-Solution:
-
-
+Solution: Let $\callD$ be the category of pairs $(G,A)$, where $A$ is a $G-$module, with morphisms given by 
+$(\alpha,f):(G,A)\to (G^\prime, A^\prime)$, where $\alpha:G\to G^\prime$ and $f:A^\prime\to A$ are group 
+morphisms such that
+\begin{equation}
+    f(\alpha(g)a)=g f(a),\;\forall g\in G, a\in A^\prime\quad(*).
+\end{equation}
+Now we claim that 
+$H^k:\callD\to \catab: (G,A)\mapsto H^k(G,A)$ is a functor. So we need to prove that a morphism 
+$(\alpha,f)$ induces a morphism $H^k(\alpha,f): H^k(G,A)\to H^k(G^\prime,A^\prime)$. 
+Let $P_k=\bbZ G^{k+1}, P_k^\prime =\bbZ (G^\prime)^{k+1}$, so $P_\bullet = (P_k)_{k\geq0}$ 
+and $P_\bullet^\prime = (P_k^\prime)_{k\geq0}$ are projective resolutions of $\bbZ$ viewed as a trivial module of 
+$G$ and $G^\prime$ respectively. Using $\alpha$, we can regard both chains as chains of $G$-modules. However, the second 
+one is no more projective as a $G$-module, but it's still acyclic. So we can shift the identity $\bbZ\to \bbZ$ 
+to a chain morhism $\tau: P_\bullet\to P_\bullet^\prime$, so it satisfies 
+$\tau_k(gm)=\alpha(g)t_k(m),\;m\in P_k$ (also note that any two choice of liftings are homotopic). Now we define the map 
+\begin{equation}
+    \phi_k:\Hom_{\bbZ G^\prime}(P_k^\prime, A^\prime)\to\Hom_{\bbZ G}(P_k,A):\varphi\mapsto f\circ\varphi\circ\tau_k.
+\end{equation}
+We observe that 
+\begin{equation}
+    \begin{split}
+        \phi_k(\varphi)(gm)&=f\varphi\tau_k(gm)\\
+        &=f\varphi(\alpha(g)\tau_k(m))\\
+        &=f(\alpha(g)\varphi\tau_k(m))\\
+        &=g\phi_k(\varphi)(m)\quad(\text{because of }(*))
+    \end{split}
+\end{equation}
+Also, we observe that the differentials in the cochain complex $(\Hom_{\bbZ G}(P_k,A))_{k\geq0}$ are given by 
+$\Hom(d,A)=(-)\circ d$, where $d(g_0,\dots, g_k)=\sum_i (-1)^i(g_0,\dots,\hat{g}_i,\dots,g_k)$. Using this expression 
+it's easy to see that $d\circ\phi_k = \phi_k\circ d$. Therefore, $\phi_k$ descend to morphisms in cohomology:
+\begin{equation}
+    \Hom(f,\tau): H^k(G^\prime,A^\prime)\rightarrow H^k(G,A):[\varphi]\mapsto [f\varphi\tau_k]\quad(**).
+\end{equation}
+Now, let $g\in G$ and $N\subset G$ a normal subgroup. Then we have a morphism $(\alpha,f):(N,A)\to (N,A)$
+given by $\alpha:N\to N:n\mapsto gng^{-1}$ and $f(a)=g^{-1}a$. The axiom $(*)$ is thus verified:
+\begin{equation}
+   f(\alpha(n)a)=f(gng^{-1}a)=ng^{-1}(a)=nf(a).    
+\end{equation}
+Then we have an induced $G$ action on $H^k(N,A)$. In this case, we can take the lifting $\tau$ 
+defined by $\tau_k(m)=gm$. It satisfies 
+\begin{equation}
+       \tau_k(hm)=ghm = ghg^{-1}gm = \alpha(h)\tau_k(m),\;\forall h\in G. 
+\end{equation}
+Therefore the associated action on $H^k(N,A)$ is given by $c(g)^*:[\varphi]\mapsto [m\mapsto g^{-1}\varphi(gm)]$ 
+because of formula $(**)$. If $g\in N$, then $c(g)^*$ is the identity map, because $\varphi$ is 
+a morphism of $N-$modules. It remains to prove that under the bijection 
+$C^k(N,A)\cong \Hom_{\bbZ N}(\bbZ N^{k+1},A)$ the $G-$action agrees with the one defined in the problem.
 
 \begin{dang}
     \textbf{Problem 9}.
