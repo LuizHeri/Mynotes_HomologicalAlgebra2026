@@ -594,7 +594,18 @@ H^\bullet(N,A)
 \]
 (where $G,N,A$ as in Exercise 6).
 \end{dang}
-Solution: 
+Solution: Let $I^\bullet = (0\to I^1\to I^2\to\cdots)$ be a injective resolution of $A\in\callA$. Then 
+\begin{equation}
+    \begin{split}
+        [R^n(E\circ F)](A) &= H^n(0\to E\circ F(I^1)\to E\circ F(I^2)\to\cdots)\\
+        &=\text{Coker}(\gamma^n:\text{Im}(E\circ F(d^{n-1}))\to \text{Ker}(E\circ F(d^n)))\\
+        &=E(\text{Coker}(\gamma^n:\text{Im}(F(d^{n-1}))\to \text{Ker}(F(d^n))))\\
+        &=[E\circ R^nF](A).
+    \end{split}
+\end{equation}
+The last step follows because $E$ preserves kernels and cokernels.
+
+
 
 \begin{dang}
     \textbf{Problem 8}.
@@ -628,7 +639,7 @@ $(\alpha,f)$ induces a morphism $H^k(\alpha,f): H^k(G,A)\to H^k(G^\prime,A^\prim
 Let $P_k=\bbZ G^{k+1}, P_k^\prime =\bbZ (G^\prime)^{k+1}$, so $P_\bullet = (P_k)_{k\geq0}$ 
 and $P_\bullet^\prime = (P_k^\prime)_{k\geq0}$ are projective resolutions of $\bbZ$ viewed as a trivial module of 
 $G$ and $G^\prime$ respectively. Using $\alpha$, we can regard both chains as chains of $G$-modules. However, the second 
-one is no more projective as a $G$-module, but it's still acyclic. So we can shift the identity $\bbZ\to \bbZ$ 
+one is no more projective as a $G$-module, but it's still acyclic. So we can lift the identity $\bbZ\to \bbZ$ 
 to a chain morhism $\tau: P_\bullet\to P_\bullet^\prime$, so it satisfies 
 $\tau_k(gm)=\alpha(g)t_k(m),\;m\in P_k$ (also note that any two choice of liftings are homotopic). Now we define the map 
 \begin{equation}
@@ -649,20 +660,31 @@ it's easy to see that $d\circ\phi_k = \phi_k\circ d$. Therefore, $\phi_k$ descen
 \begin{equation}
     \Hom(f,\tau): H^k(G^\prime,A^\prime)\rightarrow H^k(G,A):[\varphi]\mapsto [f\varphi\tau_k]\quad(**).
 \end{equation}
+We remark that if $\tau\sim\tau^\prime$, then $\tau^\prime-\tau=dh+hd$ and 
+\begin{equation}
+    f\varphi\tau^\prime -f\varphi\tau = f\varphi dh + hdf\varphi.
+\end{equation}
+If $\varphi$ is a cocycle, then $\Hom(d,A)\varphi=\varphi\circ d=0$. So we obtain 
+\begin{equation}
+    f\varphi\tau^\prime -f\varphi\tau = f\varphi hd = \Hom(d,A)(f\varphi h)
+\end{equation}
+and $[f\varphi\tau]=[f\varphi\tau^\prime]$.\par
+
 Now, let $g\in G$ and $N\subset G$ a normal subgroup. Then we have a morphism $(\alpha,f):(N,A)\to (N,A)$
 given by $\alpha:N\to N:n\mapsto gng^{-1}$ and $f(a)=g^{-1}a$. The axiom $(*)$ is thus verified:
 \begin{equation}
    f(\alpha(n)a)=f(gng^{-1}a)=ng^{-1}(a)=nf(a).    
 \end{equation}
-Then we have an induced $G$ action on $H^k(N,A)$. In this case, we can take the lifting $\tau$ 
-defined by $\tau_k(m)=gm$. It satisfies 
-\begin{equation}
-       \tau_k(hm)=ghm = ghg^{-1}gm = \alpha(h)\tau_k(m),\;\forall h\in G. 
-\end{equation}
-Therefore the associated action on $H^k(N,A)$ is given by $c(g)^*:[\varphi]\mapsto [m\mapsto g^{-1}\varphi(gm)]$ 
-because of formula $(**)$. If $g\in N$, then $c(g)^*$ is the identity map, because $\varphi$ is 
-a morphism of $N-$modules. It remains to prove that under the bijection 
-$C^k(N,A)\cong \Hom_{\bbZ N}(\bbZ N^{k+1},A)$ the $G-$action agrees with the one defined in the problem.
+Then we have an induced $G$ action on $H^k(N,A)$. We denote this action by $g\mapsto c(g)^*$.
+This action is the same as the one stated in the problem because 
+we have the lift $\tau$ given by $\tau_k:(n_0,\dots,n_k)\mapsto (\alpha(n_0),\dots,\alpha(n_k))$, so the induced action 
+on $H^k(G,A)$ is $c(g)^*:[\varphi]\mapsto [(n_0,\dots,n_k)\mapsto g^{-1}\varphi(gn_0g^{-1},\dots, gn_kg^{-1})]$.
+If $g\in N$, we can take the lift $\tau^\prime$ defined 
+by $\tau_k^\prime(m)=gm$. It satisfies $\tau_k^\prime(nm)=gnm=gng^{-1}gm=\alpha(n)\tau_k(m),\;\forall n\in N$.
+Therefore, the associated action on $H^k(N,A)$ is given by 
+$c(g)^*:[\varphi]\mapsto [m\mapsto g^{-1}\varphi(gm)]$, 
+which is the identity because $\varphi$ is a $N$-module morphism. 
+So, if $g\in N$ we have $\tau\sim\tau^\prime$ and $c(g)^*$ is the identity morphism.\qed
 
 \begin{dang}
     \textbf{Problem 9}.
@@ -675,6 +697,21 @@ of the
 H^k(N,\mathbb{Z}).
 \]
 \end{dang}
-Solution:
+Solution: Write $C^k(N,A)=\Hom_{\bbZ N}(P_k,\bbZ)$. We have a basis of $P_k$ given by tuples 
+$(1,g_1,\dots,g_k),\;g_i\in N$. Let $N=\langle x:x^3=1\rangle$, then we use the notation 
+\begin{equation}
+    x_1^{\alpha_1}\cdots x_k^{\alpha_k}=(1, x^{\alpha_1},\dots,x^{\alpha_k})
+\end{equation}
+so we think the expoenents as integers modulo $3$. Since $\bbZ$ is the trivial module, we can realize a morphism 
+$\varphi\in C^k(N,A)$ as a formal sum 
+\begin{equation}
+    \sum_{\alpha_i\in\{0,1,2\}}a_\alpha x_1^{\alpha_1}\cdots x_k^{\alpha_k},\;\alpha_i\in\bbZ.
+\end{equation}
+Now, let $y=(12)$, then $yxy=x^2$. We use the action induced by the lift $\tau$ in the solution of the previous problem. So 
+\begin{equation}
+    y\cdot ( \sum_{\alpha_i\in\{0,1,2\}}a_\alpha x_1^{\alpha_1}\cdots x_k^{\alpha_k}) = \sum_{\alpha_i\in\{0,1,2\}}a_\alpha x_1^{2\alpha_1}\cdots x_k^{2\alpha_k}.
+\end{equation}
+while $x$ acts trivialy as it must be.
+Since $G/N=\{N,yN\}$, this completely determines the action on the set $C^k(G,A)$.\qed
 
 
