@@ -269,7 +269,8 @@
     \begin{lemma}
         Any two liftings are homotopic.
     \end{lemma}
-    Proof: We want to find $h$ such that makes the diagram below commutes. 
+    Proof: We want to find $h$ (not necesseraly a morphism of complexes, it's just a map) 
+    such that makes the diagram below commutes. 
     \begin{center}
             \begin{tikzcd}
                 0\arrow[r]&A\arrow[d,swap,"0"]\arrow[dl,swap,"0"]\arrow[r,"\eta"]&I^0\arrow[dl,swap,"h^0"]\arrow[d,swap,"f^0-g^0"]
@@ -289,6 +290,11 @@
     \end{center}
     As before, we define $Q^0\to J^0: x + \text{Ker}(d^0)\mapsto f^0(x)-g^0(x)$. Now it's well defined because if 
     $x\in\text{Ker}(d^0)=\text{Im}(\eta)$, we get $f^0(x)-g^0(x)=(f^0-g^0)\eta(a)=0$.\qed
+
+    \begin{remark}
+        \textcolor{red}{To drawn the arrows of the Homotopy map, we use the rule: the direction of the arrows goes in the 
+        same direction of the chain morphisms and to the contrary direction of the chain differentials.}
+    \end{remark}
     
     \begin{remark}
         \textcolor{red}{It looks like we only used the fact that $I^\bullet$ is acyclic and 
