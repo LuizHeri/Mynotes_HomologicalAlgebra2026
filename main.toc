@@ -3,3 +3,4 @@
 \contentsline {chapter}{\numberline {2}Exercises}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}List 1}{9}{section.2.1}%
 \contentsline {section}{\numberline {2.2}List 2}{16}{section.2.2}%
+\contentsline {section}{\numberline {2.3}List 3}{23}{section.2.3}%

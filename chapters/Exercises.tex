@@ -717,3 +717,549 @@ while $x$ acts trivialy as it must be.
 Since $G/N=\{N,yN\}$, this completely determines the action on the set $C^k(N,A)$.
 
 
+
+
+\section{List 3}
+\begin{dang}
+\textbf{Problem 1.} Write out the complex \(C^{\mathrm{ori}}(\Delta^2)\) explicitly, 
+as well as its augmented version, and write out the homotopy \(h\) (from class) 
+from \(\mathrm{Id}\) to \(0\) (which shows that \(H_n(C^{\mathrm{ori}}(\Delta^2))\) 
+is \(\bbZ\) in degree \(0\) and \(0\) in all other degrees).
+\end{dang}
+Solution: We have the following chains 
+\begin{equation}
+    \begin{split}
+        & C^{\text{ori}}_0(\Delta^2) = \bbZ a + \bbZ b +\bbZ c \\
+        & C^{\text{ori}}_1(\Delta^2) = \bbZ\langle ab\rangle+\bbZ\langle ac\rangle+\bbZ\langle bc\rangle\\
+        &C^{\text{ori}}_2(\Delta^2)=\bbZ\langle abc\rangle\\
+        &C^{\text{ori}}_{\geq3}(\Delta^2)=0
+    \end{split}
+\end{equation}
+Now we have complexes (we will write $C_i$ for simplicity)
+\begin{equation}
+    \begin{split}
+        &C = (0\to C_2\overset{\partial_2}{\to}C_1\overset{\partial_1}{\to}C_0\to 0)\\
+        &\widetilde{C}=(0\to C_2\overset{\partial_2}{\to}C_1\overset{\partial_1}{\to}C_0\overset{\epsilon}{\to} \bbZ\to0)
+    \end{split}
+\end{equation}
+where $\epsilon:C_0\to \bbZ:a\mapsto 1, b\mapsto 1,c\mapsto 1$ and 
+\begin{equation}\label{equation: partial_1, partial_2 operations}
+    \begin{split}
+        &\partial_1\langle ab\rangle = b - a\\
+        &\partial_1\langle ac\rangle = c - a\\
+        &\partial_1\langle bc\rangle = c - b\\
+        &\partial_2\langle abc\rangle = \langle bc\rangle - \langle ac\rangle + \langle ab\rangle
+    \end{split}
+\end{equation}
+Now, we want to find a homotopy from the identity to 0 from the augmented complex to itself.
+\begin{center}
+    \begin{tikzcd}
+        0\arrow[r]&C_2\arrow[r]\arrow[d]&C_1\arrow[r]\arrow[d]\arrow[ld,"h_1"]&
+        C_0\arrow[r]\arrow[d]\arrow[ld,"h_0"]&\bbZ\arrow[r]\arrow[d]\arrow[ld,"h_{-1}"]&0\\
+        0\arrow[r]&C_2\arrow[r]&C_1\arrow[r]&C_0\arrow[r]&\bbZ\arrow[r]&0
+    \end{tikzcd}
+\end{center}
+For the first two blocks of the diagram below we (must) have 
+\begin{equation}
+    \begin{split}
+        &\text{(a)}\;\epsilon h_{-1} = \text{Id}_0\\
+        &\text{(b)}\;h_{-1}\epsilon + \partial_1 h_0 = \text{Id}_{C_0}\\
+        &\text{(c)}\; h_{n-1}\partial_n +\partial_{n+1} h_n = \text{Id}_{C_n}
+    \end{split}
+\end{equation}
+In particular we have $\epsilon h_{-1}(1)=1$, so if we put $h_{-1}(1)=a$ this equation is satisfied. Now, we will use equation 
+$(b)$ and $(c)$ to define $h_n$ inductively. Using equation (b) we obtain 
+\begin{equation}
+    \begin{split}
+        &\partial_1h_0(a)=0\\
+        &\partial_1h_0(b)=b-a\\
+        &\partial_1h_0(c)=c-a 
+    \end{split}
+\end{equation}
+By equations~(\ref{equation: partial_1, partial_2 operations}), we can put  
+$h_0(x)=\langle a x\rangle,\;x=a,b,c$. In a similar way, by applying $(c)$ to $\langle bc\rangle$ (for $n=1$), we get  
+\begin{equation}
+    \partial_2h_1\langle bc\rangle + h_0(c-b)=\langle bc\rangle\Rightarrow \partial_2 h_1\langle bc\rangle = 
+    \langle bc\rangle-\langle ac\rangle+\langle ab\rangle.
+\end{equation}
+This suggests the general rule $h\langle w_0w_1\cdots w_n\rangle = \langle aw_0\cdots w_n\rangle$. This is the 
+homotopy between the identity map and 0, which proves that $H_n(\Delta^2)=0$.\qed
+
+
+\begin{dang}
+\textbf{Problem 2.} The following picture represents a triangulation of a \(2\)-dimensional torus \(T\). More precisely, the geometric realisation of the \(\Delta\)-set \(S\) depicted below, is a \(2\)-dimensional torus \(T\).
+    
+    \begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        % Vertices
+        \fill (0,0) circle (1.5pt) node[below left] {\(p\)};
+        \fill (2,0) circle (1.5pt) node[below right] {\(p\)};
+        \fill (0,2) circle (1.5pt) node[above left] {\(p\)};
+        \fill (2,2) circle (1.5pt) node[above right] {\(p\)};
+        
+        % Edges
+        \draw[-, >=stealth, thick] (0,2) -- (2,2) node[midway, above] {\(a\)};
+        \draw[-, >=stealth, thick] (0,0) -- (2,0) node[midway, below] {\(a\)};
+        \draw[-, >=stealth, thick] (0,0) -- (0,2) node[midway, left] {\(b\)};
+        \draw[-, >=stealth, thick] (2,0) -- (2,2) node[midway, right] {\(b\)};
+        \draw[thick] (0,0) -- (2,2);
+        
+        % Labels
+        \node at (0.5, 1.2) {\(U\)};
+        \node at (1.5, 0.8) {\(L\)};
+    \end{tikzpicture}
+    \end{center}
+    
+    \begin{enumerate}
+        \item[(a)] Describe the \(\Delta\)-set \(S\) explicitly;
+        \item[(b)] Compute the homology of \(C_{\bullet}(S)\).
+    \end{enumerate}
+\end{dang}
+Solution: 
+First we order the vertices acording to the figure below (for the vertices of triangles $U$ and $L$)
+\begin{center}
+    \begin{tikzcd}
+         1\arrow[r,red] & 2 & 2 \\ 
+         0\arrow[u,red]\arrow[ur, red]&0\arrow[ur,blue]\arrow[r,blue]&1\arrow[u,blue]
+    \end{tikzcd}
+\end{center}
+Then we define 
+$S_0=\{p\}, S_1=\{a,c,b\},S_2=\{U,L\}$ and $S_{\geq3}=\varnothing$ with morphisms 
+\begin{equation}
+   \partial_0,\partial_1: S_1\to S_0: \left\{\begin{aligned}
+        &a\mapsto p\\ &b\mapsto p\\ &c\mapsto p
+    \end{aligned}\right.\;\text{and }
+    S_2\to S_1:\left\{\begin{aligned}
+     &U\overset{\partial_0}{\mapsto}a,\; U\overset{\partial_1}{\mapsto}c,\;U\overset{\partial_2}{\mapsto}b\\
+     &L\overset{\partial_0}{\mapsto}b,\; L\overset{\partial_1}{\mapsto}c,\;L\overset{\partial_2}{\mapsto}a   
+    \end{aligned}\right.
+\end{equation}
+Now we have the chain complex 
+\begin{equation}
+  C_\bullet = ( 0 \to C_2  \overset{d_2}{\to} C_1 \overset{d_1}{\to} C_0\to 0)
+\end{equation}
+where $C_0 = \bbZ p, C_1 = \bbZ a+\bbZ b+ \bbZ c$ and $C_2=\bbZ U+ \bbZ L$. But 
+$d_1(a)= p - p=0$, etc..., so $d_1=0$. Moreover $d_2U = a - c + b, d_2 L = b - c + a$, so 
+$d_2$ has matrix representation 
+\begin{equation}
+    [d_2]= \begin{pmatrix}
+        1&1\\ 1&1 \\ -1&-1
+    \end{pmatrix} \overset{\text{SNF}}{\sim}
+    \begin{pmatrix}
+        1&0\\0&0\\0&0
+    \end{pmatrix}.
+\end{equation}
+Therefore $\Ker d_2 \cong\bbZ ^{\#\text{collumns}- \text{rank}(d_2)}=\bbZ^1$ and 
+$\text{Im}(d_2)\cong \bbZ^{\text{rank}(d_2)}=\bbZ^1$. So we have 
+$H_0(S)=\bbZ,\; H_1(S)=\bbZ^3/\bbZ\cong\bbZ^2$ and $H_1(S)\cong\bbZ$.\qed
+
+
+\begin{dang}
+\textbf{Problem 3.} Compute the homology \(H_{\bullet}(X,\bbZ)\) and cohomology \(H^{\bullet}(X,\bbZ)\) 
+of the real projective plane \(\bbR P^2\) using the following triangulation:
+
+    \begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        % Vertices
+        \fill (0,0) circle (1.5pt) node[below left] {\(p\)};
+        \fill (2,0) circle (1.5pt) node[below right] {\(q\)};
+        \fill (0,2) circle (1.5pt) node[above left] {\(q\)};
+        \fill (2,2) circle (1.5pt) node[above right] {\(p\)};
+        
+        % Edges
+        \draw[-, >=stealth, thick] (0,2) -- (2,2) node[midway, above] {\(a\)};
+        \draw[-, >=stealth, thick] (0,0) -- (2,0) node[midway, below] {\(a\)};
+        \draw[-, >=stealth, thick] (0,0) -- (0,2) node[midway, left] {\(b\)};
+        \draw[-, >=stealth, thick] (2,0) -- (2,2) node[midway, right] {\(b\)};
+        \draw[thick] (0,0) -- (2,2);
+        
+        % Labels
+        \node at (0.5, 1.2) {\(U\)};
+        \node at (1.5, 0.8) {\(L\)};
+    \end{tikzpicture}
+    \end{center}
+\end{dang}
+Solution: First we order the vertices acording to the figure below (for the vertices of triangles $U$ and $L$)
+\begin{center}
+    \begin{tikzcd}
+         2 & 1\arrow[l,red] & 1\arrow[d,blue] \\ 
+         0\arrow[u,red]\arrow[ur, red]&0\arrow[ur,blue]\arrow[r,blue]&2
+    \end{tikzcd}
+\end{center}
+Then we have the $\Delta-$set $S_0=\{p,q\}, S_1=\{a,b,c\}$ and $S_2=\{U,L\}$, with morphisms 
+\begin{equation}
+    \begin{aligned}
+        &\partial_0 a=q\;\partial_1 a = p\\
+        &\partial_0 b = q,\;\partial_1 b = p\\
+        &\partial_0 c = p\;\partial_1 c = p \\
+        &\partial_0 U = a,\;\partial_1 U = b,\;\partial_2 U = c\\
+        &\partial_0 L = b,\;\partial_1 L=a,\;\partial_2 L = c
+    \end{aligned}
+\end{equation}
+So, the differentials are 
+\begin{equation}
+    \begin{aligned}
+        &d_1a = d_1b = q-p,\;d_1c=0\\
+        &d_2 U = a-b+c,\;d_2L = b-a +c 
+    \end{aligned}
+\end{equation}
+Then we have matrix representations 
+\begin{equation}
+    [d_2]=\begin{pmatrix}
+        1&-1\\-1&1\\1&1
+    \end{pmatrix}\overset{\text{SNF}}{\sim}
+    \begin{pmatrix}
+        1&0\\0&2\\0&0
+    \end{pmatrix}\;\text{and }
+    [d_1]=\begin{pmatrix}
+        1&1&0\\-1&-1&0
+    \end{pmatrix}\overset{\text{SNF}}{\sim}
+    \begin{pmatrix}
+        1&0&0\\0&0&0
+    \end{pmatrix}
+\end{equation}
+Since $d_2$ has maximal rank, it's injective and $H_2(\bbR P^2)=(0)$. Furthermore, by the smith normal form of 
+the matrix representation of $d_2$, we get $\text{Im}(d_2)\cong\bbZ\oplus2\bbZ$. Also, we have 
+$\Ker(d_1)\cong\bbZ^{3-1}=\bbZ^2$, so $H_1(\bbR P^2)=\bbZ^2/(\bbZ\oplus2\bbZ)\cong \bbZ/(2)$. Finally, we have 
+$H_0(\bbR P^2)\cong \bbZ^2/\bbZ \cong \bbZ$.\par 
+
+For cohomology, we have the co-complex $C^n=\Hom(C_n,\bbZ)$ with differentials given by 
+$d^n=\Hom(d_{n+1},\bbZ)$. In particular, matrix representations are obtained by transposing the previous ones.
+\begin{equation}
+    [d^0]=[d_1]^T = \begin{pmatrix}
+        1&-1\\1&-1\\0&0
+    \end{pmatrix}\overset{\text{SNF}}{\sim}
+    \begin{pmatrix}
+        1&0\\0&0\\0&0
+    \end{pmatrix},\;
+    [d^1]=[d_2]^T=\begin{pmatrix}
+        1&-1&1\\-1&1&1
+    \end{pmatrix}\overset{\text{SNF}}{\sim}
+    \begin{pmatrix}
+        1&0&0\\0&2&0
+    \end{pmatrix}
+\end{equation}
+So we obtain
+\begin{equation}
+    H^0(\bbR P^2)=\bbZ,\; H^1(\bbR P^2)=(0)\text{ and } H^2(\bbR P^2)=\bbZ/(2).
+\end{equation}
+\qed
+
+
+\begin{dang}
+\textbf{Problem 4.} Check that the universal coefficient theorem for cohomology confirms the result of Question 3.
+\end{dang}
+Solution: The universal theorem for cohomology says 
+\begin{equation}
+    H^n(X,R)\cong\Hom_R(H_n(X,R),R)\oplus\text{Ext}_R^1(H_{n-1}(X,R),R).
+\end{equation}
+Then we have 
+\begin{itemize}
+    \item[Degree 0:]
+    \begin{equation}
+            \Hom_{\bbZ}(H_0(X),\bbZ)\oplus\text{Ext}_{\bbZ}^1((0),\bbZ)=\Hom_{\bbZ}(\bbZ,\bbZ)\cong\bbZ
+    \end{equation}
+    \item[Degree 1:]
+    \begin{equation}
+        \Hom_{\bbZ}(\bbZ/(2),\bbZ)\oplus\text{Ext}^1(\bbZ,\bbZ)=(0)
+    \end{equation}
+    \item[Degree 2:]
+    \begin{equation}
+        \Hom_{\bbZ}((0),\bbZ)\oplus\text{Ext}^1(\bbZ/(2),\bbZ)=\bbZ/(2)
+    \end{equation}
+\end{itemize}
+which agrees with the cohomologies calculated in the previous problem.\qed 
+\begin{dang}
+\textbf{Problem 5.} Compute the homology of the \(n\)-sphere \(S^n\). [Hint: You might want to present \(S^n\) as a pair of \(n\)-simplices glued along their boundary. The result of Question 1 above might help.]
+\end{dang}
+Solution: 
+First, we will do the calculation for $n=2$ using the triangulation suggested.
+\begin{center}
+\begin{tikzpicture}[scale=1.2, thick, line cap=round, line join=round]
+    % Define coordinates based on the sketch
+    \coordinate (C_top_left) at (0, 2.2);
+    \coordinate (A_top_right) at (2.5, 2);
+    \coordinate (B_bottom_left) at (0.5, 0);
+    \coordinate (C_bottom_right) at (3.2, 0);
+
+    % Draw the triangles (outline)
+    \draw (C_top_left) -- (A_top_right) -- (C_bottom_right) -- (B_bottom_left) -- cycle;
+    
+    % Draw the diagonal
+    \draw (B_bottom_left) -- (A_top_right);
+
+    % Fill vertices with circles
+    \fill (C_top_left) circle (1.5 pt);
+    \fill (A_top_right) circle (1.5 pt);
+    \fill (B_bottom_left) circle (1.5 pt);
+    \fill (C_bottom_right) circle (1.5 pt);
+
+    % Add Vertex labels
+    \node[above left] at (C_top_left) { \(C\)};
+    \node[above right] at (A_top_right) {\(A\)};
+    \node[below left] at (B_bottom_left) {\(B\)};
+    \node[below right] at (C_bottom_right) {\(C\)};
+
+    % Add Edge labels
+    \node[above] at (1.25, 2.1) { \(b\)}; % Top edge
+    \node[below] at (1.85, 0) { \(a\)}; % Bottom edge
+    \node[left] at (0.25, 1.1)  {\(a\)}; % Left edge
+    \node[right] at (2.85, 1) { \(b\)}; % Right edge
+    \node[above left] at (1.7, 1.2) {\(c\)}; % Diagonal
+
+    % Add Region labels
+    \node at (0.9, 1.5) {\(U\)};
+    \node at (2, 0.6) {\(L\)};
+\end{tikzpicture}
+\end{center}
+Then we have a chain given by $C_0 = \bbZ A + \bbZ B+ \bbZ C, C_1= \bbZ a+\bbZ b+\bbZ c,C_2 = \bbZ U+\bbZ L,\;C_{\geq3}=0$
+with differentials 
+\begin{equation}
+    d:C_2\to C_1:\left\{\begin{aligned}
+        &dU = a-b+c\\
+        &dL=a-b+c
+    \end{aligned}\right.\;\text{and }
+    d:C_1\to C_0:\left\{\begin{aligned}
+        &da = C-B\\
+        &db = C-A\\
+        &dc = B-A
+    \end{aligned}\right.
+\end{equation} 
+Therefore, we have the following matrix representations
+\begin{equation}
+    [d_2]=\begin{pmatrix}
+        1&1\\-1&-1\\1&1
+    \end{pmatrix}
+    \overset{\text{SNF}}{\sim}
+    \begin{pmatrix}
+        1&0\\0&0\\0&0
+    \end{pmatrix},\;
+    [d_1]=\begin{pmatrix}
+        0&-1&-1\\-1&0&1\\1&1&0
+    \end{pmatrix}\overset{\text{SNF}}{\sim}
+    \begin{pmatrix}
+        1&0&0\\0&1&0\\0&0&0
+    \end{pmatrix}
+\end{equation}
+Then we obtain  
+\begin{equation}
+    H_n(\mathbb{S}^2)=\left\{\begin{aligned}
+        &\frac{\bbZ}{(0)}\cong \bbZ, n=2\\
+        &\frac{\bbZ}{\bbZ}=(0),\;n=1\\
+        &\frac{\bbZ^3}{\bbZ^2}\cong\bbZ,\;n=0\\
+        &0,\; n\geq3
+    \end{aligned}\right. 
+\end{equation}
+From this calculation we see a general rule: 
+$C_k(\mathbb{S}^n)=C_k(\Delta^n)$ for $k=0,\dots,n-1$ because all the edges of the two complexes $\Delta^n$
+are identified. In particular $H_k(\mathbb{S}^n)=H_k(\Delta^n)\;(k=0,\dots,n-1)$.  
+So, if $\Delta^n=[v_0\dots v_n]$, then $C_n = \bbZ U+\bbZ L$ and the differential 
+$d:C_n\to C_{n-1}$ gives 
+\begin{equation}
+    dU = \sum (-1)^i[v_0\cdots \hat{v}_i\cdots v_n] = dL.
+\end{equation} 
+So $d$ has a one dimensional kernel given by $\bbZ(U-L)$ and $H_n(\mathbb{S}^n)=\bbZ^{1}/(0)=\bbZ$. \qed
+
+\begin{dang}
+\textbf{Problem 6.} Let \(\callC_{\bullet}\) and \(\Delta_{\bullet}\) be two complexes (of objects of some abelian category) and let \(f_{\bullet},g_{\bullet}:\callC_{\bullet}\to \callD_{\bullet}\) be two morphisms. Show that a homotopy from \(f_{\bullet}\) to \(g_{\bullet}\) induces a dual homotopy from \(g_{\bullet}^{*}\) to \(f_{\bullet}^{*}\), where \(f_{\bullet}^{*},g_{\bullet}^{*}:\callD_{\bullet}^{*}\to \callC_{\bullet}^{*}\) are the corresponding adjoint morphisms.
+\end{dang}
+Solution: We have a homotopy $h$ between $f$ and $g$:
+\begin{center}
+    \begin{tikzcd}
+        0\arrow[r]&C_2\arrow[r]\arrow[d]\arrow[ld,"h_2"]&C_1\arrow[r]\arrow[d]\arrow[ld,"h_1"]&
+        C_0\arrow[r]\arrow[d]\arrow[ld,"h_0"]&0\\
+        0\arrow[r]&D_2\arrow[r]&D_1\arrow[r]&D_0\arrow[r]&0
+    \end{tikzcd}
+\end{center}
+That is, we have 
+\begin{equation}
+    d_{n+1}h_n+ h_{n-1}d_n = f_n - g_n.
+\end{equation}
+Now, we apply the functor $\Hom(-,A)$ to this equation, so we obtain 
+\begin{equation}
+    \Hom(h_n,A)\Hom(d_{n+1},A)+\Hom(d_n,A)\Hom(h_{n-1},A) = \Hom(f_n,A)-\Hom(g_n,A).
+\end{equation}
+Furthermore, we have by definition $d^n = \Hom(d_{n+1},A)$ and $h^n=\Hom(h_{n-1},A)$, i.e., 
+\begin{equation}
+    h^{n+1}d^n + d^{n-1}h^n = \Hom(f_n,A)-\Hom(g_n,A)
+\end{equation}
+which defines a homotopy between $\Hom(f_n,A)$ and $\Hom(g_n,A)$.\qed
+
+
+\begin{dang}
+\textbf{7.} Let \(C^{\bullet}\) be a complex of finite dimensional vector spaces, and suppose that \(C^{n} = 0\) for all but finitely many \(n\in \bbZ\). Show that
+    \[
+    \sum_{n\in \bbZ}(-1)^{n}\dim C^{n} = \sum_{n\in \bbZ}(-1)^{n}\dim H^{n}(C^{\bullet}).
+    \]
+\end{dang}
+Solution: Suppose that we have a co-cochain complex 
+\begin{equation}
+    C^\bullet =(0\to C^0\to C^1\to C^2\to \cdot\to C_N\to 0\to\cdots).
+\end{equation}
+Then we calculate
+\begin{equation}
+    \begin{split}
+        \sum_{n\geq0}(-1)^n\dim H^n(C^\bullet) &=
+        \dim\Ker d^0 +\sum_{n=1}^N(\dim\Ker d^n - \dim\text{Im}(d^{n-1}))\\
+        &=\dim\Ker d^0 - \dim\Ker d^1 + \dim\text{Im}d^0\\
+        &\quad+\dim\Ker d^1 -\dim\text{Im}d^1\\
+        &\quad\cdots \\
+        &\quad(-1)^{N-1}\dim\Ker d^{N-1} +(-1)^N\dim\text{Im}d^{N-2}\\
+        &\quad(-1)^N\dim\Ker d^N + (-1)^{N-1}\dim\text{Im}d^{N-1}\\
+        &=\sum_{n\geq0}(-1)^n(\dim\Ker d^n + \dim\text{Im}d^n)\\
+        &=\sum_{n\geq0}(-1)^n\dim C^n.
+    \end{split}
+\end{equation}
+\qed
+
+\noindent \textbf{Definition 0.1.} Let \(\Delta^n\subset \bbR^{n + 1}\) be the topological \(n\)-simplex, and \(v_{0},\ldots ,v_{n}\) its vertices. Denote by \(b\in \Delta^n\) the point \((\frac{1}{n + 1},\frac{1}{n + 1},\ldots ,\frac{1}{n + 1})\). The barycentric subdivision of \(\Delta^n\) is the decomposition of into the \(n\)-simplices \([b,w_{0},\ldots ,w_{n - 1}]\) where, inductively, \([w_{0},\ldots ,w_{n - 1}]\) is an \((n - 1)\)-simplex in the barycentric subdivision of a face \([v_{0},\ldots ,\widehat{v_{i}},\ldots ,v_{n}]\) of \(\Delta^n\).
+
+\begin{dang}
+\textbf{Problem 8.} Draw the barycentric subdivisions of \(\Delta^0\), \(\Delta^1\) and \(\Delta^2\).
+\end{dang}
+Solution: We have $\Delta^0 = *$, the barycentric subdivision of a point. Next, 
+we have the barycentric subdivision of a line $\Delta^1$.
+
+\begin{center}
+    % First drawing: Line segment from (0,1) to (1,0) with midpoint at (1/2, 1/2)
+\begin{tikzpicture}[scale=1.5, thick]
+    % Coordinates
+    \coordinate (P0) at (0,1);
+    \coordinate (P1) at (1,0);
+    \coordinate (M) at (0.5, 0.5);
+    
+    % Draw line
+    \draw (P0) -- (P1);
+    
+    % Draw filled circles
+    \fill (P0) circle (1.5pt);
+    \fill (P1) circle (1.5pt);
+    \fill (M) circle (1.5pt);
+
+    %Draw labels for each vertex
+    \node[below right] at (P1) {$(1,0)$};
+    \node[above left] at (P0) {$(0,1)$};
+    \node[above right] at (M) {$b$};
+\end{tikzpicture}
+\end{center}
+Finally, we have the barycentric subdivision of a triangle $\Delta^2$.
+\begin{center}
+% Second drawing: Triangle with vertices (1,0,0), (0,1,0), (0,0,1)
+% projected onto 2D, with midpoints and centroid
+\begin{tikzpicture}[scale=3.3, thick]
+    % Define 2D projection of the 3D coordinates
+    % A common projection is (x,y,z) -> (x + 0.5*y, 0.866*y)
+    % For (1,0,0) -> (1, 0)
+    % For (0,1,0) -> (0.5, 0.866)
+    % For (0,0,1) -> (0, 0)
+    \coordinate (V1) at (1,0);
+    \coordinate (V2) at (0.5, 0.866);
+    \coordinate (V3) at (0,0);
+    
+    % Calculate midpoints
+    \coordinate (M12) at (0.75, 0.433);
+    \coordinate (M23) at (0.25, 0.433);
+    \coordinate (M31) at (0.5, 0);
+    
+    % Calculate centroid (1/3, 1/3, 1/3)
+    % 2D projection: (1/3 + 0.5*(1/3), 0.866*(1/3)) = (0.5, 0.2887)
+    \coordinate (C) at (0.5, 0.2887);
+    
+    % Draw triangle edges
+    \draw (V1) -- (V2) -- (V3) -- cycle;
+    
+    % Draw edges connecting midpoints to centroid
+    \draw (M12) -- (C);
+    \draw (M23) -- (C);
+    \draw (M31) -- (C);
+    \draw (V1) -- (C);
+    \draw (V2) -- (C);
+    \draw (V3) -- (C);
+    
+    % Draw filled circles at vertices
+    \fill (V1) circle (0.5pt);
+    \fill (V2) circle (0.5pt);
+    \fill (V3) circle (0.5pt);
+    
+    % Draw filled circles at midpoints
+    \fill (M12) circle (0.5pt);
+    \fill (M23) circle (0.5pt);
+    \fill (M31) circle (0.5pt);
+    
+    % Draw filled circle at centroid
+    \fill (C) circle (0.5pt);
+    
+    % Add vertex labels for clarity
+    \node[below right] at (V1) {\((1,0,0)\)};
+    \node[above] at (V2) {\((0,1,0)\)};
+    \node[below left] at (V3) {\((0,0,1)\)};
+    \node[below right] at (C) {\(b\)};
+\end{tikzpicture}
+\end{center}
+\qed
+
+\begin{dang}
+\textbf{Problem 9.} Let \(S\) be a \(\Delta\)-set. We define the barycentric subdivision \(\operatorname{Sd}(S)\) (which is another \(\Delta\)-set) of \(S\) as follows:
+    \[
+    \operatorname{Sd}(S)_n = \{(\sigma ,f_1,\ldots ,f_n),\sigma \in 
+    S_N,f_i:[k_i]\hookrightarrow [k_{i - 1}],0\leq k_n< \dots < k_0 = N\}
+    \]
+    Explain the correspondence between this definition and the geometric one, on the specific example of the subdivision of \(\Delta^2\).
+\end{dang}
+Solution: Take a 2-simplex $\Delta^2$.
+\begin{center}
+\begin{tikzpicture}[scale=1.5, thick, line cap=round, line join=round]
+    % Define vertices
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (2, 0);
+    \coordinate (C) at (1, 1.5);
+
+    % Draw the triangle
+    \draw (A) -- (B) -- (C) -- cycle;
+
+    % Fill vertices with circles
+    \fill (A) circle (1.5pt);
+    \fill (B) circle (1.5pt);
+    \fill (C) circle (1.5pt);
+
+    % Vertex labels
+    \node[below left] at (A) {\(v_0\)};
+    \node[below right] at (B) {\(v_1\)};
+    \node[above] at (C) {\(v_2\)};
+
+    % Edge labels (a opposite A, b opposite B, c opposite C)
+    \node[below] at (1, 0) {\(c\)};           % Edge AB (opposite C)
+    \node[left] at (0.35, 0.8) {\(b\)};       % Edge AC (opposite B)
+    \node[right] at (1.45, 0.8) {\(a\)};      % Edge BC (opposite A)
+
+    % Region label
+    \node at (0.95, 0.5) {\(U\)};
+\end{tikzpicture}
+\end{center}
+This is a $\Delta-$set given by $S_0=\{v_0,v_1,v_2\},S_1=\{a,b,c\},S_2=\{U\}$ and $S_{\geq3}=\varnothing$. Then, by definition 
+we have 
+\begin{equation}
+    \text{Sd}(S)_2=\{(U,f_1,f_2): [0]\overset{f_1}{\hookrightarrow}[1]\overset{f_2}{\hookrightarrow}[2]\}.
+\end{equation}
+So we have $\#\text{Sd}(S)_2=6$, which is the number of small triangles in the barycentric subdivision of 
+$\Delta^2$ in the problem 8. The idea is that each pair of injections $f_1,f_2$ parametrize 
+a small triangle in that subdivision. In fact, each pair give a sequence of vertices os a small triangle:
+\begin{equation}
+    v_{f_2f_1(0)},\; \frac{v_{f_2f_1(0)}+v_{f_2(1-f_1(0))}}{2},\; \frac{v_0+v_1+v_2}{3}.
+\end{equation}
+For example, the pair $f_1(0)=0, f_2:0\mapsto 0, 1\mapsto 1$ give the sequence of vertices $v_0,\tfrac{v_0+v_1}{2}$ 
+and $\tfrac{v_0+v_1+v_2}{3}$.\par 
+
+Moreover, we have 
+\begin{equation}
+    \text{Sd}(S)_1=\bigcup_{i=0}^1\{(U,f):[i]\overset{f}{\hookrightarrow}[2]\}\cup
+    \bigcup_{x\in\{a,b,c\}}\{(x,f): [0]\overset{f}{\hookrightarrow}[1]\}.
+\end{equation}
+Here, the geometric correspondence is as follows. A pair $(U,f),f:[1]\to [2]$ corresponds to an edge in the barycentric 
+subdivison of $U$ by connecting the vertices $\tfrac{v_{f(0)}+v_{f(1)}}{2}$ and $\tfrac{v_0+v_1+v_2}{3}$. Also 
+a pair $(U,f),f:[0]\to [2]$ corresponds to the edge connecting $v_{f(0)}$ and $\tfrac{v_0+v_1+v_2}{3}$. Finally, 
+the a pair $(x,f)$ take an edge and select one of the segments between it midpoint and another vertex. For example 
+$(a,f), f:0\mapsto 1$ gives the edge connecting $\tfrac{v_1+v_2}{2}$ and $v_2$.\par 
+
+Finally, the set $\text{Sd}(S)_0=\{v_0,v_1,v_2, a,b,c, U\}$ corresponds to each one of the 7 points 
+of the barycentric subdivision of $\Delta^2$.\qed
